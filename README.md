@@ -48,6 +48,32 @@ This tool handles your Claude Code OAuth token, so you should be able to verify 
 
 ---
 
+## Antivirus Warnings
+
+A few scanners flag `UsageMonitorForClaude.exe` as a trojan, and Chrome may cancel the download with "Virus found". This is a false positive. Every new release tends to be flagged for a while after publication.
+
+**Check that you have the authentic file.** Each release lists the SHA256 of its EXE at the end of the [release notes](https://github.com/jens-duttke/usage-monitor-for-claude/releases). Compare it against your download:
+
+```powershell
+Get-FileHash UsageMonitorForClaude.exe -Algorithm SHA256
+```
+
+A matching hash means the file is exactly the one published here, including the copy WinGet installs.
+
+**Where the warning comes from.** The app is a Python program shipped as a single portable EXE built with [PyInstaller](https://pyinstaller.org/). Such a bundle unpacks itself into a temporary directory on startup and runs the interpreter from there. That is what a self-extracting packer does, and malware is built with the same tool, so heuristic engines react to the packaging rather than to the program.
+
+The detection names say as much. In `Trojan:Win32/Wacatac.B!ml` the `!ml` suffix means a machine-learning model produced the verdict instead of a signature match, and `Wacatac` is a generic bucket for "suspicious, unidentified". How widespread a file already is counts too, and a release published yesterday is nowhere - which is why the identical file is often rated clean a few weeks later.
+
+Chrome does not add a second opinion. It passes every downloaded executable to the antivirus installed on your machine and shows you that verdict, so the browser message and the scanner alert are one detection, not two.
+
+**What you can do.**
+
+- Restore the file from quarantine and add an exclusion for it.
+- Report it to your vendor as a false positive. For Microsoft Defender, use [Submit a file for malware analysis](https://www.microsoft.com/en-us/wdsi/filesubmission).
+- Or skip the packed EXE and [run from source](#building-from-source) instead - nothing is bundled there, and you can read every line before you start it.
+
+---
+
 ## Requirements
 
 - **Windows 10 or Windows 11** (64-bit), or **Linux** with a freedesktop desktop environment (see [Linux](#linux) below)
@@ -67,6 +93,9 @@ Or install it from [WinGet](https://learn.microsoft.com/windows/package-manager/
 ```powershell
 winget install jens-duttke.usage-monitor-for-claude
 ```
+
+> [!NOTE]
+> If Windows or your browser reports the download as a virus, see [Antivirus Warnings](#antivirus-warnings) above. It is a false positive from the way the EXE is packaged, and the section shows how to verify that your download is the published file.
 
 ### Linux
 
