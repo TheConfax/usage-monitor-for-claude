@@ -308,6 +308,18 @@ New features should follow the existing architecture. Key points from the guidel
 
 ---
 
+## Related Projects
+
+[hybrid2102](https://github.com/hybrid2102) used this project as the basis for two tray monitors for other AI coding tools:
+
+- **[Usage Monitor for Codex](https://github.com/hybrid2102/usage-monitor-for-codex)** - usage limits for ChatGPT Codex
+- **[Usage Monitor for Copilot](https://github.com/hybrid2102/usage-monitor-for-copilot)** - usage limits for the GitHub Copilot CLI
+
+> [!IMPORTANT]
+> These are independent projects, maintained by their own author. This project neither reviews nor controls their code and takes no responsibility for their content. Nothing this README states about security, privacy, or data handling applies to them. Review them yourself and use them at your own risk.
+
+---
+
 ## License
 
 MIT

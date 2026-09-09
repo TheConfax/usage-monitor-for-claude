@@ -176,6 +176,7 @@ Prioritize readability and auditability - users handle credentials and must be a
   6. **Reach and preferences** (secondary concerns): 13 languages, Customizable
 - Write feature descriptions from the user's perspective - lead with the problem solved or value gained, not the implementation. Ask: "why would someone choose this tool because of this feature?"
 - Unique features (no competing tool has them) deserve a standalone bullet; convenience improvements that could be described as sub-details of an existing feature belong in that feature's description instead
+- Every entry under "Related Projects" is a third-party repository and stays under the disclaimer block that follows the list: this project neither reviews nor controls that code, and the README's security and privacy statements do not extend to it. "Security & Transparency" promises a single network destination and credentials that never leave the machine, and a reader carries those promises over to whatever is linked below them. Never add a link there without the disclaimer
 
 ## User Documentation (`README.md`, `docs/`)
 - State what happens and what the user has to do - never why the code works that way. A reason belongs in a code comment or in this file; the reader of a settings page is configuring the app, not reviewing the design
